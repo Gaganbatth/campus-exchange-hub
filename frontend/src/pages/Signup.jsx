@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "../styles/Signup.css";
 
 function Signup() {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,19 +26,24 @@ function Signup() {
 
       console.log(response.data);
 
-      alert("Signup successful!");
+      toast.success("Account created successfully!");
 
-      // clear form
+      // Clear form
       setName("");
       setEmail("");
       setPassword("");
+
+      // Redirect to Login page after 1.2 seconds
+      setTimeout(() => {
+        navigate("/login");
+      }, 1200);
     } catch (error) {
       console.log(error);
 
       if (error.response) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       } else {
-        alert("Something went wrong");
+        toast.error("Something went wrong.");
       }
     }
   };
@@ -51,6 +60,7 @@ function Signup() {
         <form onSubmit={handleSignup}>
           <div className="input-group">
             <label>Name</label>
+
             <input
               type="text"
               placeholder="Enter your name"
@@ -62,6 +72,7 @@ function Signup() {
 
           <div className="input-group">
             <label>Email</label>
+
             <input
               type="email"
               placeholder="Enter your email"
@@ -73,6 +84,7 @@ function Signup() {
 
           <div className="input-group">
             <label>Password</label>
+
             <input
               type="password"
               placeholder="Enter your password"

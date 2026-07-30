@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 import defaultImage from "../assets/products/book.png";
 
 import {
@@ -89,7 +90,7 @@ function ProductDetails() {
   };
 
   if (!product) {
-    return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+    return <Loader />;
   }
 
   return (

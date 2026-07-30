@@ -1,9 +1,12 @@
 import "./Hero.css";
 import { FaSearch } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import studentImage from "../assets/student-illustration.png";
 
 function Hero({ search, setSearch }) {
+  const navigate = useNavigate();
+
   const placeholders = [
     "Search for books...",
     "Search for stationery...",
@@ -59,6 +62,26 @@ function Hero({ search, setSearch }) {
     return () => clearTimeout(timer);
   }, [text, isDeleting, wordIndex]);
 
+  const scrollToProducts = () => {
+    const section = document.getElementById("featured-products");
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleSell = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+      navigate("/sell");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <section className="hero">
       <div className="hero-container">
@@ -85,14 +108,20 @@ function Hero({ search, setSearch }) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+
             <button className="search-btn">
               <FaSearch />
             </button>
           </div>
 
           <div className="hero-buttons">
-            <button className="browse-btn">Explore Products</button>
-            <button className="sell-btn">Sell an Item</button>
+            <button className="browse-btn" onClick={scrollToProducts}>
+              Explore Products
+            </button>
+
+            <button className="sell-btn" onClick={handleSell}>
+              Sell an Item
+            </button>
           </div>
         </div>
 

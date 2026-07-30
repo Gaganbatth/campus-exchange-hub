@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "../styles/Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -23,8 +24,6 @@ function Login() {
         },
       );
 
-      alert(response.data.message);
-
       console.log("Response:", response.data);
 
       // Save user to localStorage
@@ -32,11 +31,17 @@ function Login() {
 
       console.log("Saved User:", localStorage.getItem("user"));
 
-      navigate("/");
+      // Success Toast
+      toast.success("Login successful!");
+
+      // Redirect after 1 second
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     } catch (error) {
       console.error(error);
 
-      alert(error.response?.data?.message || "Login failed");
+      toast.error(error.response?.data?.message || "Login failed");
     }
   };
 

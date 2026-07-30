@@ -5,7 +5,8 @@ import Categories from "../components/Categories";
 import FeaturedProducts from "../components/FeaturedProducts";
 import HowItWorks from "../components/HowItWorks";
 import Features from "../components/Features";
-
+import Footer from "../components/Footer";
+import BackToTop from "../components/BackToTop";
 function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
@@ -28,6 +29,8 @@ function Home() {
 
       <HowItWorks />
       <Features />
+      <Footer />
+      <BackToTop />
     </>
   );
 }
