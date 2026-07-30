@@ -1,0 +1,154 @@
+.hero {
+  padding: 70px 20px 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.hero-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 470px;
+  max-width: 100%;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tagline {
+  color: royalblue;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: 58px;
+  line-height: 1.15;
+  margin-bottom: 25px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.typing-word {
+  display: inline-block;
+  min-width: 240px;
+  color: royalblue;
+  font-weight: 700;
+}
+
+.cursor {
+  color: royalblue;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero p {
+  font-size: 19px;
+  color: #6b7280;
+  line-height: 1.8;
+  max-width: 550px;
+  margin-bottom: 35px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  margin: 35px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 18px 22px;
+  font-size: 17px;
+  border: none;
+  outline: none;
+}
+
+.search-btn {
+  width: 70px;
+  background: royalblue;
+  color: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: #254eda;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons button {
+  padding: 15px 34px;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.browse-btn {
+  background: royalblue;
+  color: white;
+}
+
+.sell-btn {
+  background: seagreen;
+  color: white;
+}

@@ -1,0 +1,149 @@
+.listings-page {
+  min-height: 100vh;
+  padding: 40px 60px;
+  background: #f5f7fb;
+}
+
+.listings-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.listings-header h1 {
+  font-size: 34px;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.listings-header p {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.listings-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.listing-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.listing-card:hover {
+  transform: translateY(-8px);
+}
+
+.listing-image {
+  height: 220px;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listing-image img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
+.listing-info {
+  padding: 20px;
+}
+
+.listing-info h3 {
+  font-size: 20px;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: royalblue;
+  margin-bottom: 12px;
+}
+
+.condition {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: royalblue;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+.status.active {
+  color: #16a34a;
+}
+
+.status.sold {
+  color: #dc2626;
+}
+
+.listing-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.edit-btn {
+  background: royalblue;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .listings-page {
+    padding: 30px 20px;
+  }
+
+  .listings-header h1 {
+    font-size: 28px;
+  }
+
+  .listings-container {
+    grid-template-columns: 1fr;
+  }
+}

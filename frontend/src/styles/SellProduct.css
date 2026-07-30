@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sell-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.sell-card {
+  width: 750px;
+  max-width: 100%;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+
+.sell-card h1 {
+  text-align: center;
+  color: royalblue;
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.sell-card p {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 35px;
+}
+
+/* Upload Section */
+
+.upload-box {
+  border: 2px dashed royalblue;
+  border-radius: 15px;
+  padding: 35px;
+  text-align: center;
+  background: #f8f9ff;
+  margin-bottom: 35px;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  background: #eef3ff;
+  border-color: #2f56d8;
+}
+
+.upload-icon {
+  font-size: 55px;
+  color: royalblue;
+  margin-bottom: 12px;
+}
+
+.upload-box h3 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.upload-box span {
+  display: block;
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+
+.upload-btn {
+  display: inline-block;
+  background: royalblue;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.upload-btn:hover {
+  background: #2f56d8;
+}
+
+.upload-text {
+  margin-top: 18px;
+  color: #666;
+  font-size: 15px;
+}
+
+/* Product Details Heading */
+
+.form-heading {
+  text-align: center;
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e9ecff;
+}
+
+/* Form */
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+/* SAME STYLE FOR INPUT, SELECT & TEXTAREA */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-family: inherit;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  background: white;
+  color: #333;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* Placeholder */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #888;
+}
+
+/* Focus */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: royalblue;
+  box-shadow: 0 0 0 4px rgba(65, 105, 225, 0.15);
+}
+
+/* Dropdown */
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: white;
+  color: #333;
+}
+
+/* Textarea */
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Button */
+
+.post-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  background: royalblue;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.post-btn:hover {
+  background: #2f56d8;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .sell-card {
+    padding: 25px;
+  }
+
+  .sell-card h1 {
+    font-size: 30px;
+  }
+
+  .sell-card p {
+    font-size: 16px;
+  }
+
+  .upload-box h3 {
+    font-size: 22px;
+  }
+
+  .form-heading {
+    font-size: 24px;
+  }
+
+  .form-group label {
+    font-size: 16px;
+  }
+}
