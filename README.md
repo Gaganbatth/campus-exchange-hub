@@ -130,20 +130,6 @@ PORT=5000
 
 ---
 
-## 📸 Screenshots
-
-Add screenshots of:
-
-- Home Page
-- Login
-- Signup
-- Sell Product
-- Product Details
-- Wishlist
-- My Listings
-
----
-
 ## 🔮 Future Enhancements
 
 - Chat between Buyer and Seller
