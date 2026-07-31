@@ -44,8 +44,11 @@
 }
 
 .welcome-text {
+  background: #eef4ff;
+  color: royalblue;
+  padding: 8px 16px;
+  border-radius: 25px;
   font-weight: 600;
-  color: #1e3a8a;
   margin-right: 15px;
 }
 

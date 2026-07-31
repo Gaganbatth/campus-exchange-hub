@@ -1,15 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 function Navbar() {
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    const result = await Swal.fire({
+      title: "Logout?",
+      text: "Are you sure you want to logout?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#4169e1",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Yes, Logout",
+      cancelButtonText: "Cancel",
+    });
+
+    if (!result.isConfirmed) return;
+
     localStorage.removeItem("user");
+
     toast.success("Logged out successfully!");
-    window.location.href = "/";
+
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
   };
 
   return (
@@ -43,7 +61,7 @@ function Navbar() {
       <div className="nav-buttons">
         {user ? (
           <>
-            <span className="welcome-text">Hi, {user.name}</span>
+            <span className="welcome-text">👋 Hi, {user.name}</span>
 
             <button className="logout-btn" onClick={handleLogout}>
               Logout

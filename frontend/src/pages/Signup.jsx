@@ -10,10 +10,10 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const handleSignup = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const response = await axios.post(
         "http://localhost:5000/api/auth/signup",
@@ -27,7 +27,7 @@ function Signup() {
       console.log(response.data);
 
       toast.success("Account created successfully!");
-
+      setLoading(false);
       // Clear form
       setName("");
       setEmail("");
@@ -39,7 +39,7 @@ function Signup() {
       }, 1200);
     } catch (error) {
       console.log(error);
-
+      setLoading(false);
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
@@ -94,8 +94,8 @@ function Signup() {
             />
           </div>
 
-          <button className="signup-btn" type="submit">
-            Signup
+          <button className="signup-btn" type="submit" disabled={loading}>
+            {loading ? "Creating Account..." : "Signup"}
           </button>
         </form>
       </div>

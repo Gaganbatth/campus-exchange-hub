@@ -9,12 +9,12 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const response = await axios.post(
         "http://localhost:5000/api/auth/login",
@@ -38,9 +38,10 @@ function Login() {
       setTimeout(() => {
         navigate("/");
       }, 1000);
+      setLoading(false);
     } catch (error) {
       console.error(error);
-
+      setLoading(false);
       toast.error(error.response?.data?.message || "Login failed");
     }
   };
@@ -92,8 +93,8 @@ function Login() {
 
           <div className="forgot-password">Forgot Password?</div>
 
-          <button type="submit" className="login-btn">
-            Login
+          <button type="submit" className="login-btn" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 

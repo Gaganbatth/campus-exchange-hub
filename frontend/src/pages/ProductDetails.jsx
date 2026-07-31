@@ -169,12 +169,16 @@ function ProductDetails() {
             </button>
 
             <button
-              className="wishlist-btn"
+              className={`wishlist-btn ${isWishlisted ? "wishlisted" : ""}`}
               disabled={product.status === "Sold"}
               onClick={handleWishlist}
             >
               <FaHeart />
-              {product.status === "Sold" ? "Product Sold" : "Add to Wishlist"}
+              {product.status === "Sold"
+                ? "Product Sold"
+                : isWishlisted
+                  ? "Added to Wishlist"
+                  : "Add to Wishlist"}
             </button>
           </div>
         </div>

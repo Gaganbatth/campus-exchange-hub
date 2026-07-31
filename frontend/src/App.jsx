@@ -10,7 +10,7 @@ import SellProduct from "./pages/SellProduct";
 import ProductDetails from "./pages/ProductDetails";
 import MyListings from "./pages/MyListings";
 import Wishlist from "./pages/Wishlist";
-
+import NotFound from "./pages/NotFound";
 function App() {
   return (
     <BrowserRouter>
@@ -37,6 +37,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/mylistings" element={<MyListings />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

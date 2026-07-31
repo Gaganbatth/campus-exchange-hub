@@ -239,3 +239,14 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.wishlist-btn.wishlisted {
+  background: #ffebee;
+  color: #e53935;
+  border: 2px solid #e53935;
+}
+
+.wishlist-btn.wishlisted:hover {
+  background: #e53935;
+  color: white;
+}
