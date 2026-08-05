@@ -1,7 +1,7 @@
 import "./FeaturedProducts.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../axios";
 import { toast } from "react-toastify";
 import book from "../assets/products/book.png";
 
@@ -53,8 +53,8 @@ function FeaturedProducts({ search, category, sort, setSort }) {
   // Fetch Products
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/products?search=${search}&category=${category}&sort=${sort}`,
+      const response = await API.get(
+        `/api/products?search=${search}&category=${category}&sort=${sort}`,
       );
 
       setProducts(response.data.products);
@@ -71,9 +71,7 @@ function FeaturedProducts({ search, category, sort, setSort }) {
     if (!user) return;
 
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/products/wishlist/${user._id}`,
-      );
+      const response = await API.get(`/api/products/wishlist/${user._id}`);
 
       const ids = response.data.wishlist.map((item) => item._id);
 
@@ -94,12 +92,9 @@ function FeaturedProducts({ search, category, sort, setSort }) {
         return;
       }
 
-      const response = await axios.post(
-        `http://localhost:5000/api/products/${productId}/wishlist`,
-        {
-          userId: user._id,
-        },
-      );
+      const response = await API.post(`/api/products/${productId}/wishlist`, {
+        userId: user._id,
+      });
 
       toast.success(response.data.message);
 
@@ -164,7 +159,7 @@ function FeaturedProducts({ search, category, sort, setSort }) {
                 <img
                   src={
                     product.images && product.images.length > 0
-                      ? `http://localhost:5000/uploads/${product.images[0]}`
+                      ? `${import.meta.env.VITE_API_URL}/uploads/${product.images[0]}`
                       : book
                   }
                   alt={product.productName}

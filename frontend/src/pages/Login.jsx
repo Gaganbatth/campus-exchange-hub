@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import API from "../axios";
 import { toast } from "react-toastify";
 import "../styles/Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -16,13 +16,10 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        {
-          email,
-          password,
-        },
-      );
+      const response = await API.post("/api/auth/login", {
+        email,
+        password,
+      });
 
       console.log("Response:", response.data);
 
