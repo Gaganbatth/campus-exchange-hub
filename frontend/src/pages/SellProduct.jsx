@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import API from "../axios";
 
 function SellProduct() {
   const navigate = useNavigate();
@@ -31,9 +31,7 @@ function SellProduct() {
 
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/products/${id}`,
-      );
+      const response = await API.get(`/api/products/${id}`);
 
       setProductData({
         productName: response.data.productName,
@@ -73,10 +71,7 @@ function SellProduct() {
 
     try {
       if (isEdit) {
-        await axios.put(
-          `http://localhost:5000/api/products/${id}`,
-          productData,
-        );
+        await API.put(`/api/products/${id}`, productData);
 
         toast.success("Product updated successfully!");
 
@@ -112,7 +107,7 @@ function SellProduct() {
           formData.append("images", image);
         });
 
-        await axios.post("http://localhost:5000/api/products", formData, {
+        await API.post("/api/products", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

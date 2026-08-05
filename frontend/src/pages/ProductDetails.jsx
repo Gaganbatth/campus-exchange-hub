@@ -1,7 +1,7 @@
 import "../styles/ProductDetails.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../axios";
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import defaultImage from "../assets/products/book.png";
@@ -29,14 +29,12 @@ function ProductDetails() {
 
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/products/${id}`,
-      );
+      const response = await API.get(`/api/products/${id}`);
 
       setProduct(response.data);
       if (response.data.images.length > 0) {
         setSelectedImage(
-          `http://localhost:5000/uploads/${response.data.images[0]}`,
+          `${import.meta.env.VITE_API_URL}/uploads/${response.data.images[0]}`,
         );
       }
     } catch (error) {
@@ -51,9 +49,7 @@ function ProductDetails() {
 
       if (!user) return;
 
-      const response = await axios.get(
-        `http://localhost:5000/api/products/wishlist/${user._id}`,
-      );
+      const response = await API.get(`/api/products/wishlist/${user._id}`);
 
       const ids = response.data.wishlist.map((item) => item._id);
 
@@ -73,12 +69,9 @@ function ProductDetails() {
         return;
       }
 
-      const response = await axios.post(
-        `http://localhost:5000/api/products/${id}/wishlist`,
-        {
-          userId: user._id,
-        },
-      );
+      const response = await API.post(`/api/products/${id}/wishlist`, {
+        userId: user._id,
+      });
 
       toast.success(response.data.message);
 
@@ -113,15 +106,18 @@ function ProductDetails() {
                 {product.images.map((image, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:5000/uploads/${image}`}
+                    src={`${import.meta.env.VITE_API_URL}/uploads/${image}`}
                     alt=""
                     className={`thumbnail ${
-                      selectedImage === `http://localhost:5000/uploads/${image}`
+                      selectedImage ===
+                      `${import.meta.env.VITE_API_URL}/uploads/${image}`
                         ? "active-thumbnail"
                         : ""
                     }`}
                     onClick={() =>
-                      setSelectedImage(`http://localhost:5000/uploads/${image}`)
+                      setSelectedImage(
+                        `${import.meta.env.VITE_API_URL}/uploads/${image}`,
+                      )
                     }
                   />
                 ))}

@@ -2,7 +2,7 @@ import "../styles/MyListings.css";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../axios";
 
 import defaultImage from "../assets/products/book.png";
 
@@ -27,9 +27,7 @@ function MyListings() {
         return;
       }
 
-      const response = await axios.get(
-        `http://localhost:5000/api/products/my/${user._id}`,
-      );
+      const response = await API.get(`/api/products/my/${user._id}`);
 
       setProducts(response.data.products);
     } catch (error) {
@@ -46,7 +44,7 @@ function MyListings() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`);
+      await API.delete(`/api/products/${id}`);
 
       setProducts((prevProducts) =>
         prevProducts.filter((product) => product._id !== id),
@@ -65,9 +63,7 @@ function MyListings() {
 
   const handleStatus = async (id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/products/${id}/status`,
-      );
+      const response = await API.put(`/api/products/${id}/status`);
 
       toast.success(response.data.message);
 
@@ -95,7 +91,7 @@ function MyListings() {
           {products.map((product) => {
             const imageUrl =
               product.images && product.images.length > 0
-                ? `http://localhost:5000/uploads/${product.images[0]}`
+                ? `${import.meta.env.VITE_API_URL}/uploads/${product.images[0]}`
                 : defaultImage;
 
             return (

@@ -1,6 +1,6 @@
 import "../styles/Wishlist.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../axios";
 
 import defaultImage from "../assets/products/book.png";
 
@@ -22,9 +22,7 @@ function Wishlist() {
         return;
       }
 
-      const response = await axios.get(
-        `http://localhost:5000/api/products/wishlist/${user._id}`,
-      );
+      const response = await API.get(`/api/products/wishlist/${user._id}`);
 
       setWishlist(response.data.wishlist);
     } catch (error) {
@@ -37,12 +35,9 @@ function Wishlist() {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
 
-      const response = await axios.post(
-        `http://localhost:5000/api/products/${productId}/wishlist`,
-        {
-          userId: user._id,
-        },
-      );
+      const response = await API.post(`/api/products/${productId}/wishlist`, {
+        userId: user._id,
+      });
 
       alert(response.data.message);
 
@@ -68,7 +63,7 @@ function Wishlist() {
               <img
                 src={
                   item.images && item.images.length > 0
-                    ? `http://localhost:5000/uploads/${item.images[0]}`
+                    ? `${import.meta.env.VITE_API_URL}/uploads/${item.images[0]}`
                     : defaultImage
                 }
                 alt={item.productName}

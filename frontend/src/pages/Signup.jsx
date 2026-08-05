@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
+import API from "../axios";
 import "../styles/Signup.css";
 
 function Signup() {
@@ -15,14 +15,11 @@ function Signup() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
-        {
-          name,
-          email,
-          password,
-        },
-      );
+      const response = await API.post("/api/auth/signup", {
+        name,
+        email,
+        password,
+      });
 
       console.log(response.data);
 
