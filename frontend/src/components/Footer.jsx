@@ -1,6 +1,6 @@
 import "../styles/Footer.css";
 import { FaGraduationCap, FaGithub, FaLinkedin } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="footer">
@@ -19,10 +19,10 @@ function Footer() {
         <div className="footer-center">
           <h3>Quick Links</h3>
 
-          <a href="/">Home</a>
-          <a href="/wishlist">Wishlist</a>
-          <a href="/mylistings">My Listings</a>
-          <a href="/sell">Sell Product</a>
+          <Link to="/">Home</Link>
+          <Link to="/wishlist">Wishlist</Link>
+          <Link to="/mylistings">My Listings</Link>
+          <Link to="/sell">Sell Product</Link>
         </div>
 
         <div className="footer-right">

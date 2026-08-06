@@ -3,11 +3,11 @@ import { FaArrowUp } from "react-icons/fa";
 import "../styles/BackToTop.css";
 
 function BackToTop() {
-  const [showButton] = useState(true);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowButton(true);
+      setShowButton(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
