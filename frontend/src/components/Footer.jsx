@@ -19,7 +19,9 @@ function Footer() {
         <div className="footer-center">
           <h3>Quick Links</h3>
 
-          <Link to="/">Home</Link>
+          <Link to="/" reloadDocument>
+            Home
+          </Link>
           <Link to="/wishlist">Wishlist</Link>
           <Link to="/mylistings">My Listings</Link>
           <Link to="/sell">Sell Product</Link>
