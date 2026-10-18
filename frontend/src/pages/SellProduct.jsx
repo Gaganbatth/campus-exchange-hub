@@ -27,7 +27,7 @@ function SellProduct() {
     if (isEdit) {
       fetchProduct();
     }
-  }, []);
+  }, [id]);
 
   const fetchProduct = async () => {
     try {
@@ -53,6 +53,17 @@ function SellProduct() {
 
     if (selectedImages.length > 5) {
       toast.warning("You can upload a maximum of 5 images.");
+      e.target.value = "";
+      return;
+    }
+
+    const invalidImage = selectedImages.some(
+      (image) => !image.type.startsWith("image/"),
+    );
+
+    if (invalidImage) {
+      toast.error("Please select valid image files.");
+      e.target.value = "";
       return;
     }
 
@@ -68,6 +79,12 @@ function SellProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Mandatory image validation for new products
+    if (!isEdit && images.length === 0) {
+      toast.error("Please upload at least one product image.");
+      return;
+    }
 
     try {
       if (isEdit) {
@@ -141,9 +158,9 @@ function SellProduct() {
           <div className="upload-box">
             <FaCloudUploadAlt className="upload-icon" />
 
-            <h3>Upload Product Images</h3>
+            <h3>Upload Product Images *</h3>
 
-            <span>Maximum 5 Images</span>
+            <span>Minimum 1 image required | Maximum 5 images</span>
 
             <label className="upload-btn">
               Choose Images
@@ -210,6 +227,7 @@ function SellProduct() {
               type="number"
               name="price"
               placeholder="Enter price"
+              min="0"
               value={productData.price}
               onChange={handleChange}
               required
